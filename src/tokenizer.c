@@ -3,7 +3,7 @@
 
 #include <stdio.h>_
 #include <stdlib.h>
-
+#include "tokenizer.h"
 
 // if c is a space character, returns 1 (true) if not, returns 0 (false)
 int space_char(char c)
