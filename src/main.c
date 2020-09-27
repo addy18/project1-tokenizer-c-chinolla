@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#incldue "history.h"
+#include "history.h"
 #include "tokenizer.h"
 
 
