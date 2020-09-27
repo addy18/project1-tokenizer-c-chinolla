@@ -1,16 +1,17 @@
-// Cristobal Chinolla
+emacs // Cristobal Chinolla
 // Main file / UI
 
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "history.h"
-#include "tokenizer.h"
+#include "history.c"
+#include "tokenizer.c"
 
 
 int main()
 {
   char userInput;
+  int idNum;
   char input[100];
   List *list = init_history();
 
@@ -28,15 +29,15 @@ int main()
 	
     case 'n':
       printf("PLEASE ENTER SENTENCE:  ");
-      gets(input);
-      char **tokens = tokenize(input);
-      print_tokens(tokens);
+      fgets(input, 100, stdin);
+      char **token = tokenize(input);
+      print_tokens(token);
       add_history(list, input);
-      free_tokens(tokens);
+      free_tokens(token);
       break;
 
     case '!':
-      int idNum;
+     
       printf("Enter ID number:  ");
       scanf("%d", &idNum);
 

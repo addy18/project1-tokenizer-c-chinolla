@@ -1,7 +1,7 @@
 // Cristobal Chinolla
 // Comp Arch I || Lab 1: Tokenizer
 
-#include <stdio.h>_
+#include <stdio.h>
 #include <stdlib.h>
 #include "tokenizer.h"
 
