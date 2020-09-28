@@ -6,7 +6,7 @@
 List *init_history() // initializes the linked list (stores history)
 {
   List *list = malloc(sizeof(List)); // allocated memory for linked list
-  list->root = NULL; // empty linked list
+  list->root = malloc(sizeof(Item)); // empty linked list
   return list;
 }
 

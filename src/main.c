@@ -16,7 +16,7 @@ int main()
   List *list = init_history();
 
   printf("PLEASE ENTER ONE OF THE FOLLOWING \n");
-  printf(" 'q' quit | 'n' enter sentence | '!' for history | 'a' view all history");
+  printf(" 'q' quit | 'n' enter sentence | '!' for history | 'a' view all history \n");
   fgets(input, 100, stdin);
 
   switch(input[0])
