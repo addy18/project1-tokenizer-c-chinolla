@@ -93,13 +93,16 @@ char **tokenize(char *str)
  char **tokens = malloc((totalIndex + 1) * sizeof(char*));
  char *strpointer = str;
 
- while(index < totalIndex)
+ int i;
+ for(i = 0; i < totalIndex; i++)
    {
-    strpointer = word_start(strpointer); // moves pointer to beginning of word
-    len = word_terminator(strpointer) - word_start(strpointer); // gets lenght of word
-    tokens[index] = copy_str(strpointer, len); // tokens the string
-    strpointer = word_terminator(strpointer); // moves pointer to the end of the word
+     strpointer = word_start(strpointer);
+     len = (word_terminator(strpointer) - word_start(strpointer));
+     tokens[i] = copy_str(strpointer, len);
+     strpointer = word_terminator(strpointer);
    }
+ tokens[i] = 0;
+ return tokens;
 };
 
 void print_tokens(char **tokens)
@@ -115,11 +118,10 @@ void print_tokens(char **tokens)
 void free_tokens(char **tokens)
 {
  int index = 0;
- while (tokens[index] != NULL)
- {
-  free(tokens[index]);
-  index++;
- }
+ for (index = 0; tokens[index] != 0; index++)
+   {
+     free(tokens[index]);
+   }
  free(tokens);
 };
 

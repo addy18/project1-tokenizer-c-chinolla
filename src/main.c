@@ -1,4 +1,4 @@
-emacs // Cristobal Chinolla
+// Cristobal Chinolla
 // Main file / UI
 
 
@@ -17,9 +17,9 @@ int main()
 
   printf("PLEASE ENTER ONE OF THE FOLLOWING \n");
   printf(" 'q' quit | 'n' enter sentence | '!' for history | 'a' view all history");
-  scanf("%c", &userInput);
+  fgets(input, 100, stdin);
 
-  switch(userInput)
+  switch(input[0])
     {
     case 'q':
       printf("EXITING");

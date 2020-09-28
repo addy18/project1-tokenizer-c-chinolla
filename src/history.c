@@ -1,7 +1,5 @@
-// Cristobal Chinolla
-// History File
+#include<stdlib.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "history.h"
 #include "tokenizer.h"
 
@@ -15,40 +13,17 @@ List *init_history() // initializes the linked list (stores history)
 void add_history(List *list, char *str)
 {
   // id = placement in list
-  int id = 0;
-  // first check if list is empty (starts off empty)
-  if(list->root = NULL)
-    {
-      // id = placement in list
-      id++;
+  int id = 1;
+  Item *node = list -> root;
 
-      // create a new node
-      Item *node = malloc(sizeof(Item));
-      // set nodes id
-      node->id = id;
-      // set nodes string attribute
-      node->str = str;
-      // sets nodes next to null
-      node->next = NULL;
-      // sets current node to the head of the list
-      list->root = node;
-    }
-  else // if list is not empty
-    {
-      // current node is set to the head of the list
-      Item *curr_node = list->root;
-      // a new node is created
-      Item *newnode = malloc(sizeof(Item));
-      // traverses to the end of the list
-      while(curr_node -> next != NULL)
-	{
-	  id++;
-	  curr_node = curr_node -> next;
-	}
-      newnode -> id = id;
-      newnode -> str = str;
-      curr_node -> next = newnode;
-    }
+  while(node -> next != NULL)
+  {
+    node = node -> next;
+    id++;
+  }
+ node -> next = malloc(sizeof(Item));
+ node -> next -> str = copy_str(str, (word_terminator(str) - word_start(str)));
+ node -> next -> id = id;
 }
 
 char *get_history(List *list, int id)
