@@ -14,47 +14,53 @@ int main()
   int idNum;
   char input[100];
   List *list = init_history();
+  int flag = 1;
 
-  printf("PLEASE ENTER ONE OF THE FOLLOWING \n");
-  printf(" 'q' quit | 'n' enter sentence | '!' for history | 'a' view all history \n");
-  fgets(input, 100, stdin);
-
-  switch(input[0])
-    {
-    case 'q':
-      printf("EXITING");
-      free_history(list);
-      return 0;
-      break;
+    printf("PLEASE ENTER ONE OF THE FOLLOWING \n");
+  while(flag = 1)
+      {
+	printf(" 'q' quit | 'n' enter sentence | '!' for history | 'a' view all history \n");
+	fgets(input, 100, stdin);
+  
+  
+	switch(input[0])
+	{
+	case 'q':
+	  printf("EXITING");
+	  free_history(list);
+	  flag = 0;
+	  return 0;
+	  break;
 	
-    case 'n':
-      printf("PLEASE ENTER SENTENCE:  ");
-      fgets(input, 100, stdin);
-      char **token = tokenize(input);
-      print_tokens(token);
-      add_history(list, input);
-      free_tokens(token);
-      break;
+	case 'n':
+	  printf("PLEASE ENTER SENTENCE:  ");
+	  fgets(input, 100, stdin);
+	  char **token = tokenize(input);
+	  print_tokens(token);
+	  add_history(list, input);
+	  free_tokens(token);
+	  break;
 
-    case '!':
+	case '!':
      
-      printf("Enter ID number:  ");
-      scanf("%d", &idNum);
+	  printf("Enter ID number:  ");
+	  scanf("%d", &idNum);
 
-      char *retrieved_hist = get_history(list, idNum);
-      char **tokens = tokenize(retrieved_hist);
+	  char *retrieved_hist = get_history(list, idNum);
+	  char **tokens = tokenize(retrieved_hist);
 
-      printf("RETRIEVED: %s\n", retrieved_hist);
-      print_tokens(tokens);
-      free_tokens(tokens);
-      break;
+	  printf("RETRIEVED: %s\n", retrieved_hist);
+	  print_tokens(tokens);
+	  free_tokens(tokens);
+	  break;
 
-    case 'a':
-      print_history(list);
-      break;
+	case 'a':
+	  print_history(list);
+	  break;
 
-    default:
-      printf("Invalid Input");
-    }
-      
+	default:
+	  printf("Invalid Input");
+
+	}
+      }  
 }
